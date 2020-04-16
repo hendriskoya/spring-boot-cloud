@@ -1,0 +1,42 @@
+version: '3.0'
+
+services:
+  config-server:
+    image: "config-server:latest"
+    container_name: config-server
+    build: config-server/.
+    # networks: 
+    #   - spring-boot-cloud
+    ports:
+      - "8888:8888"
+    volumes: 
+      - /home/hkoya/workspace/spring-boot-cloud-repository:/opt/git-repository
+    environment: 
+      - GIT_REPOSITORY=/opt/git-repository
+  producer:
+    image: "producer:latest"
+    container_name: producer
+    build: producer/.
+    # networks: 
+    #   - spring-boot-cloud
+    ports:
+      - "9091:9091"
+    environment: 
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
+    depends_on: 
+      - "config-server"
+    command: ["./wait-for-it.sh", "config-server:8888", "--", "producer/bin/producer"]
+  consumer:
+    image: "consumer:latest"
+    container_name: consumer
+    build: consumer/.
+    # networks: 
+    #   - spring-boot-cloud
+    ports:
+      - "9092:9092"
+    environment: 
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
+    depends_on: 
+      - "config-server"
+    command: ["./wait-for-it.sh", "config-server:8888", "--", "consumer/bin/consumer"]
+    
