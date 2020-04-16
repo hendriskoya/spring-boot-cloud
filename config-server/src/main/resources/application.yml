@@ -1,0 +1,20 @@
+server:
+  port: 8888
+
+spring:
+  security:
+    user:
+      name: config-server
+      password: cs@123456
+  cloud:
+    config:
+      server:
+        git:
+#          uri: file://${user.home}/workspace/spring-boot-cloud/git-config
+          uri: file://${GIT_REPOSITORY}
+          cloneOnStart: true
+          force-pull: true
+
+#management:
+#  security:
+#    enabled: false
