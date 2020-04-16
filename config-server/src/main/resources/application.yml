@@ -10,8 +10,7 @@ spring:
     config:
       server:
         git:
-#          uri: file://${user.home}/workspace/spring-boot-cloud/git-config
-          uri: file://${GIT_REPOSITORY}
+          uri: file://${GIT_REPOSITORY:${user.home}/workspace/spring-boot-cloud-repository}
           cloneOnStart: true
           force-pull: true
 
