@@ -4,7 +4,7 @@ services:
   config-server:
     image: "config-server:latest"
     container_name: config-server
-    build: config-server/.
+    build: config-server
     # networks: 
     #   - spring-boot-cloud
     ports:
@@ -16,7 +16,7 @@ services:
   producer:
     image: "producer:latest"
     container_name: producer
-    build: producer/.
+    build: producer
     # networks: 
     #   - spring-boot-cloud
     ports:
@@ -29,7 +29,7 @@ services:
   consumer:
     image: "consumer:latest"
     container_name: consumer
-    build: consumer/.
+    build: consumer
     # networks: 
     #   - spring-boot-cloud
     ports:
