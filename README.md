@@ -23,3 +23,5 @@ docker-compose up --build
 - add gateway (zuul or gateway or both)
 
 - colocar senha cifrada no config-server
+
+- centralizar as variáveis de ambiente do docker-compose
