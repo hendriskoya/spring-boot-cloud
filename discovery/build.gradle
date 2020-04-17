@@ -2,11 +2,14 @@ plugins {
 	id 'org.springframework.boot' version '2.2.6.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
+	id 'application'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+mainClassName = 'com.example.discovery.DiscoveryApplication'
 
 repositories {
 	mavenCentral()
@@ -23,6 +26,9 @@ dependencies {
 	//CONFIG SERVER CLIENT
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 
+	//ACTUATOR
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
 	//TEST
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
@@ -37,4 +43,10 @@ dependencyManagement {
 
 test {
 	useJUnitPlatform()
+}
+
+bootDistZip {
+	doLast {
+		println(['sh', '-c', 'cp ../util/wait-for-it.sh build/distributions/'].execute().text.trim())
+	}
 }
