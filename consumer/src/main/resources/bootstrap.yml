@@ -11,3 +11,9 @@ spring:
       name: ${spring.application.name}
       profile: ${SPRING_CLOUD_CONFIG_PROFILE:local}
       label: ${SPRING_CLOUD_CONFIG_LABEL:master}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info

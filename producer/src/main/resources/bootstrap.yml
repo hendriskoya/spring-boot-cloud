@@ -3,11 +3,22 @@ spring:
   main.banner-mode: "off"
   cloud:
     config:
+      # não está configurado o retry. É uma opção principalmente caso existe problema de timeout nas primeiras tentativas
+      # devido oscilação na rede por exemplo
       enabled: ${SPRING_CLOUD_CONFIG_ENABLED:true}
-      uri: ${SPRING_CLOUD_CONFIG_URI:http://192.168.1.138:8888/}
+      uri: ${SPRING_CLOUD_CONFIG_URI:http://localhost:8888/}
       fail-fast: true
       username: config-server
       password: 'cs@123456'
       name: ${spring.application.name}
       profile: ${SPRING_CLOUD_CONFIG_PROFILE:local}
       label: ${SPRING_CLOUD_CONFIG_LABEL:master}
+      retry:
+        initial-interval: 2000
+        max-attempts: 10
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info,env,configprops

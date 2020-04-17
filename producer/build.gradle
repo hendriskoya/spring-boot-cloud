@@ -19,7 +19,16 @@ ext {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+//	CONFIG SERVER CLIENT
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+
+//	SPRING RETRY
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	implementation 'org.springframework.retry:spring-retry:1.2.5.RELEASE'
+
+//	TEST
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}

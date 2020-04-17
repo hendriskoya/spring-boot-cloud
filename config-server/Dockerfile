@@ -1,6 +1,10 @@
 FROM openjdk:11.0.6-jre
 
+ENV TZ=America/Sao_Paulo
+
 WORKDIR /opt
+
+RUN echo $TZ > /etc/timezone
 
 COPY build/distributions/config-server-boot*.zip config-server.zip
 
