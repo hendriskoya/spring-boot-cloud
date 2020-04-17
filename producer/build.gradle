@@ -27,6 +27,9 @@ dependencies {
 	//SERVICE DISCOVERY (EUREKA)
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
+	//CLOUD BUS
+	implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
+
 	//SPRING RETRY
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
 	implementation 'org.springframework.retry:spring-retry:1.2.5.RELEASE'
