@@ -14,10 +14,12 @@ docker-compose up --build
 
 # atividades
 
-- create a load balancer
+- add load balancer
 
 - add spring cloud bus
 
 - add service discovery
 
 - add gateway (zuul or gateway or both)
+
+- colocar senha cifrada no config-server

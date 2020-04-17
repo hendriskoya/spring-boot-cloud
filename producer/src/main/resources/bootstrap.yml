@@ -16,9 +16,3 @@ spring:
       retry:
         initial-interval: 2000
         max-attempts: 10
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: refresh,health,info,env,configprops
