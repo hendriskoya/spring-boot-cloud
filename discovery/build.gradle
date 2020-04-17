@@ -17,7 +17,13 @@ ext {
 }
 
 dependencies {
+	//EUREKA SERVER
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+
+	//CONFIG SERVER CLIENT
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+
+	//TEST
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
