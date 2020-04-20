@@ -1,0 +1,6 @@
+bootDistZip {
+	doLast {
+		println(['sh', '-c', 'cp ../util/wait-for-it.sh build/distributions/'].execute().text.trim())
+		println(['sh', '-c', 'cp ../util/wait-for-health.sh build/distributions/'].execute().text.trim())
+	}
+}

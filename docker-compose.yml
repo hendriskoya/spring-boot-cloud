@@ -21,7 +21,8 @@ services:
       - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
     # depends_on: 
     #   - "config-server"
-    command: ["./wait-for-it.sh", "config-server:8888", "--", "discovery/bin/discovery"]
+    # command: ["./wait-for-it.sh", "config-server:8888", "--", "discovery/bin/discovery"]
+    command: ["./wait-for-health.sh", "-h", "http://config-server:8888/actuator/health", "-t", "30", "--", "discovery/bin/discovery"]
   producer:
     image: "producer:latest"
     container_name: producer
@@ -30,10 +31,12 @@ services:
       - "9091:9091"
     environment: 
       - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
+      - SPRING_CLOUD_BUS_ENABLED=false
       - EUREKA_CLIENT_SERVICE_URL=http://discovery:8761/eureka
     # depends_on:
     #   - "config-server"
-    command: ["./wait-for-it.sh", "config-server:8888", "--", "producer/bin/producer"]
+    # command: ["./wait-for-it.sh", "config-server:8888", "--", "producer/bin/producer"]
+    command: ["./wait-for-health.sh", "-h", "http://discovery:8761/actuator/health", "-t", "30", "--", "producer/bin/producer"]
   consumer:
     image: "consumer:latest"
     container_name: consumer
@@ -45,5 +48,6 @@ services:
       - EUREKA_CLIENT_SERVICE_URL=http://discovery:8761/eureka      
     # depends_on: 
     #   - "config-server"
-    command: ["./wait-for-it.sh", "config-server:8888", "--", "consumer/bin/consumer"]
+    # command: ["./wait-for-it.sh", "config-server:8888", "--", "consumer/bin/consumer"]
+    command: ["./wait-for-health.sh", "-h", "http://discovery:8761/actuator/health", "-t", "30", "--", "consumer/bin/consumer"]
     
