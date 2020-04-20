@@ -41,3 +41,5 @@ dependencyManagement {
 test {
 	useJUnitPlatform()
 }
+
+apply from: '../util/util.gradle'
