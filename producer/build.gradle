@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.6.RELEASE'
+	id 'org.springframework.boot' version '2.1.13.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 	id 'application'
@@ -14,7 +14,7 @@ repositories {
 }
 
 ext {
-	set('springCloudVersion', "Hoxton.SR3")
+	set('springCloudVersion', "Greenwich.SR5")
 }
 
 dependencies {
@@ -49,3 +49,5 @@ dependencyManagement {
 test {
 	useJUnitPlatform()
 }
+
+apply from: '../util/util.gradle'

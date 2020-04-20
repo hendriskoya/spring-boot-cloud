@@ -1,10 +1,12 @@
 spring:
-  application.name: producer
-  main.banner-mode: "off"
+  application:
+    name: producer
+  main:
+    banner-mode: "off"
   cloud:
+    bus:
+      enabled: ${SPRING_CLOUD_BUS_ENABLED:true}
     config:
-      # não está configurado o retry. É uma opção principalmente caso existe problema de timeout nas primeiras tentativas
-      # devido oscilação na rede por exemplo
       enabled: ${SPRING_CLOUD_CONFIG_ENABLED:true}
       uri: ${SPRING_CLOUD_CONFIG_URI:http://localhost:8888/}
       fail-fast: true
@@ -13,6 +15,8 @@ spring:
       name: ${spring.application.name}
       profile: ${SPRING_CLOUD_CONFIG_PROFILE:local}
       label: ${SPRING_CLOUD_CONFIG_LABEL:master}
+      # É uma boa opção principalmente caso exista problema de timeout nas primeiras tentativas
+      # devido oscilação na rede por exemplo
       retry:
         initial-interval: 2000
         max-attempts: 10
