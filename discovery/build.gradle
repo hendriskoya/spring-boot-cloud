@@ -45,8 +45,5 @@ test {
 	useJUnitPlatform()
 }
 
-bootDistZip {
-	doLast {
-		println(['sh', '-c', 'cp ../util/wait-for-it.sh build/distributions/'].execute().text.trim())
-	}
-}
+apply from: '../util/util.gradle'
+
