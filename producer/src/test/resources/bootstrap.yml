@@ -1,5 +1,8 @@
 spring:
-  application.name: producer
+  application:
+    name: producer
   cloud:
+    bus:
+      enabled: false
     config:
       enabled: false
