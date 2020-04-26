@@ -12,7 +12,7 @@ spring:
     config:
       server:
         git:
-          uri: file://${GIT_REPOSITORY:${user.home}/workspace/spring-boot-cloud-repository}
+          uri: file://${GIT_REPOSITORY:${user.home}/workspace/git-repository/salesforce-config}
           cloneOnStart: true
           force-pull: true
 
