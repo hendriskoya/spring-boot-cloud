@@ -2,10 +2,11 @@ package com.example.producer.properties;
 
 import java.io.Serializable;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
-@Configuration
+@Component
 @ConfigurationProperties("app")
+//@RefreshScope
 public class ApplicationProperties implements Serializable {
 
     private String message;
